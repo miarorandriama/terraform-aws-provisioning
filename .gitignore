@@ -1,4 +1,22 @@
+# Log for Terraform
+*.log
+*.lock.hcl
+
+# Terraform binaries
+.terraform/
+
+# State files
 *.tfstate
 *.tfstate.backup
-.terraform/
+*.tfstate.lock.info
+
+# Variables and secrets
+*.tfvars
+*.tfvars.json
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Other files
 kbOmine/
