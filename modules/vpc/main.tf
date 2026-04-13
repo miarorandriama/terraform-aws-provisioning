@@ -1,0 +1,47 @@
+resource "aws_vpc" "the_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
+
+// Private Subnet
+resource "aws_subnet" "the_private_subnet" {
+  vpc_id     = aws_vpc.the_vpc.id
+  availability_zone = "us-east-2a"
+  cidr_block = "10.0.1.0/24"
+  map_public_ip_on_launch = false
+  tags = {
+    Name = "Private Subnet 1"
+    Environment = "Production"
+  }
+}
+
+// Public Subnet
+resource "aws_subnet" "the_public_subnet" {
+  vpc_id     = aws_vpc.the_vpc.id
+  availability_zone = "us-east-2a"
+  cidr_block = "10.0.10.0/24"
+  map_public_ip_on_launch = true
+  tags = {
+    Name = "Public Subnet 1"
+    Environment = "Production"
+  }
+}
+
+#Création d'une passerelle Internet
+resource "aws_internet_gateway" "the_igw" {
+  vpc_id = aws_vpc.the_vpc.id
+}
+
+#Configuration de la table de routage pour les sous-réseaux publiques
+resource "aws_route_table" "the_route_table" {
+  vpc_id = aws_vpc.the_vpc.id
+  route {
+    cidr_block = "0.0.0.0/0" # Tout autre trafic redirigé vers l'Internet Gateway
+    gateway_id = aws_internet_gateway.the_igw.id
+  }
+}
+
+#Association des tables de routage aux sous-réseaux correspondants
+resource "aws_route_table_association" "the_route_table_association" {
+  subnet_id      = aws_subnet.the_public_subnet.id
+  route_table_id = aws_route_table.the_route_table.id
+}
