@@ -20,3 +20,5 @@ crash.*.log
 
 # Other files
 kbOmine/
+*.tfplan
+localstack_providers_override.tf
