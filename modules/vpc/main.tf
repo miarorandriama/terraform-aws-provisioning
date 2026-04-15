@@ -1,6 +1,12 @@
 resource "aws_vpc" "the_vpc" {
   cidr_block = var.vpc_cidr
   enable_dns_hostnames = true
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.env}-vpc"
+    }
+  )
 }
 
 // Private Subnet
@@ -9,6 +15,12 @@ resource "aws_subnet" "the_private_subnet" {
   availability_zone = var.az
   cidr_block = var.private_subnet_cidr
   map_public_ip_on_launch = false
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "${var.env}-private-subnet"
+    }
+  )
 }
 
 // Public Subnet

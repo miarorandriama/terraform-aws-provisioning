@@ -25,3 +25,8 @@ variable "env" {
   type = string
   default = "dev"
 }
+
+variable "common_tags" {
+  description = "Common tags for all the ressources"
+  type = map(string)
+}

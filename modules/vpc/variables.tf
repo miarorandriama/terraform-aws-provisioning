@@ -4,12 +4,6 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 }
 
-variable "env" {
-  description = "Environment tag for resources"
-  type        = string
-  default     = "dev"
-}
-
 variable "private_subnet_cidr" {
   description = "CIDR block for the private subnet"
   type        = string
@@ -26,4 +20,15 @@ variable "az" {
   description = "Availability zone for the subnets"
   type        = string
   default     = "us-east-2a"
+}
+
+variable "env" {
+  description = "Environment tag for resources"
+  type        = string
+  default     = "dev"
+}
+
+variable "common_tags" {
+  description = "Common tags for all the resources"
+  type        = map(string)
 }
