@@ -1,10 +1,10 @@
 module "vpc" {
   source = "./modules/vpc"
-  # You can override the module's default variables by specifying them here or adding them to the main variables.tf file
-  # vpc_cidr = "20.0.0.0/16"
-  # public_subnet_cidr = "20.0.1.0/24"
-  # private_subnet_cidr = "20.0.2.0/24"
-  # az = "us-east-1a"
+
+  vpc_cidr = var.vpc_config.cidr_block
+  public_subnet_cidr = var.vpc_config.public_subnet_cidr
+  private_subnet_cidr = var.vpc_config.private_subnet_cidr
+  az = var.vpc_config.availability_zone
   
   common_tags = var.common_tags
   env = var.environment
@@ -12,10 +12,10 @@ module "vpc" {
 
 module "ec2" {
   source = "./modules/ec2"
-  # You can override the module's default variables by specifying them here or adding them to the main variables.tf file
-  # instance_name = "my_ec2_instance"
-  # instance_type = "t2.medium"
-  # env = "test"
+
+  instance_name = var.instance_config.instance_name
+  instance_type = var.instance_config.instance_type
+
   vpc_id = module.vpc.vpc_id
   subnet_id = module.vpc.private_subnet_id
 
