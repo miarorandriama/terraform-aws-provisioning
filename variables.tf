@@ -19,5 +19,6 @@ variable "instance_config" {
   default = {
     instance_name = "my_ec2_instance"
     instance_type = "t2.medium"
+    ami = "ami-0fb653ca2d3203ac1" // Amazon Linux 2 AMI
   }
 }

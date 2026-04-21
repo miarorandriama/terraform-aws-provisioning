@@ -16,4 +16,5 @@ vpc_config = {
 instance_config = {
   instance_name = "The_{{var.environment}}_EC2_Instance"
   instance_type = "t2.medium"
+  ami = "ami-0fb653ca2d3203ac1" // Amazon Linux 2 AMI
 }

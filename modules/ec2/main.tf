@@ -38,7 +38,7 @@ resource "aws_security_group" "the_ec2_sg" {
 }
 
 resource "aws_instance" "the_ec2_instance" {
-  ami = "ami-0fb653ca2d3203ac1" // Amazon Linux 2 AMI
+  ami = var.ami
   instance_type = var.instance_type
   subnet_id = var.subnet_id
   vpc_security_group_ids = [aws_security_group.the_ec2_sg.id]

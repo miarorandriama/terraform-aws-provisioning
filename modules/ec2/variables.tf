@@ -10,6 +10,12 @@ variable "instance_type" {
   default = "t2.micro"
 }
 
+variable "ami" {
+  description = "The ami of the EC2 instance"
+  type = string
+  default = "ami-0fb653ca2d3203ac1" // Amazon Linux 2 AMI
+}
+
 variable "vpc_id" {
   description = "The ID of the VPC" // From the VPC module
   type = string

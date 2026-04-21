@@ -15,6 +15,7 @@ module "ec2" {
 
   instance_name = var.instance_config.instance_name
   instance_type = var.instance_config.instance_type
+  ami = var.instance_config.ami
 
   vpc_id = module.vpc.vpc_id
   subnet_id = module.vpc.private_subnet_id
