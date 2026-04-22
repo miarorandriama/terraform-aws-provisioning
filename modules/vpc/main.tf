@@ -4,7 +4,7 @@ resource "aws_vpc" "the_vpc" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.env}-vpc"
+      Name = "The-${var.env}-vpc"
     }
   )
 }
@@ -18,7 +18,7 @@ resource "aws_subnet" "the_private_subnet" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.env}-private-subnet"
+      Name = "The-${var.env}-private-subnet"
     }
   )
 }
@@ -29,6 +29,12 @@ resource "aws_subnet" "the_public_subnet" {
   availability_zone = var.az
   cidr_block = var.public_subnet_cidr
   map_public_ip_on_launch = true
+  tags = merge(
+    var.common_tags,
+    {
+      Name = "The-${var.env}-public-subnet"
+    }
+  )
 }
 
 #Création d'une passerelle Internet

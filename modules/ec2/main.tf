@@ -1,5 +1,4 @@
 resource "aws_security_group" "the_ec2_sg" {
-  name        = "${var.instance_name}-sg"
   description = "Allow SSH, HTTP, and HTTPS traffic to the EC2 instance"
   vpc_id      = var.vpc_id
 
@@ -32,7 +31,7 @@ resource "aws_security_group" "the_ec2_sg" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.env}-sg"
+      Name = "The-${var.env}-sg"
     }
   )
 }
@@ -45,7 +44,7 @@ resource "aws_instance" "the_ec2_instance" {
   tags = merge(
     var.common_tags,
     {
-      Name = "${var.env}-${var.instance_name}"
+      Name = "The-${var.env}-${var.instance_name}"
     }
   )
 }
