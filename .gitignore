@@ -21,3 +21,4 @@ crash.*.log
 # Other files
 *.tfplan
 localstack_providers_override.tf
+.venv/
