@@ -1,9 +1,9 @@
-output "bucket_id" {
-  description = "Le nom du bucket"
-  value       = aws_s3_bucket.this.id
+output "the_bucket_id" {
+  description = "The ID of the S3 bucket"
+  value       = aws_s3_bucket.the_bucket.id
 }
 
-output "bucket_arn" {
-  description = "L'ARN du bucket pour les politiques IAM"
-  value       = aws_s3_bucket.this.arn
+output "the_bucket_arn" {
+  description = "The ARN of the S3 bucket"
+  value       = aws_s3_bucket.the_bucket.arn
 }

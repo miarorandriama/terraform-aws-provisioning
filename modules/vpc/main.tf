@@ -4,7 +4,7 @@ resource "aws_vpc" "the_vpc" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.environment}-vpc"
+      Name = "${var.environment}-vpc"
     }
   )
 }
@@ -18,7 +18,7 @@ resource "aws_subnet" "the_private_subnet" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.environment}-private-subnet"
+      Name = "${var.environment}-private-subnet"
     }
   )
 }
@@ -32,7 +32,7 @@ resource "aws_subnet" "the_public_subnet" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.environment}-public-subnet"
+      Name = "${var.environment}-public-subnet"
     }
   )
 }

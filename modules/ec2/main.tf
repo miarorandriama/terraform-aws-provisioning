@@ -1,3 +1,17 @@
+resource "aws_instance" "the_ec2_instance" {
+  ami = var.ami
+  instance_type = var.instance_type
+  subnet_id = var.subnet_id
+  vpc_security_group_ids = [aws_security_group.the_ec2_sg.id]
+  tags = merge(
+    var.common_tags,
+    var.additional_tags,
+    {
+      Name = "${var.instance_name}"
+    }
+  )
+}
+
 resource "aws_security_group" "the_ec2_sg" {
   description = "Allow SSH, HTTP, and HTTPS traffic to the EC2 instance"
   vpc_id      = var.vpc_id
@@ -31,20 +45,7 @@ resource "aws_security_group" "the_ec2_sg" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.environment}-sg"
-    }
-  )
-}
-
-resource "aws_instance" "the_ec2_instance" {
-  ami = var.ami
-  instance_type = var.instance_type
-  subnet_id = var.subnet_id
-  vpc_security_group_ids = [aws_security_group.the_ec2_sg.id]
-  tags = merge(
-    var.common_tags,
-    {
-      Name = "The-${var.environment}-${var.instance_name}"
+      Name = "${var.environment}-sg"
     }
   )
 }

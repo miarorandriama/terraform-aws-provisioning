@@ -1,12 +1,18 @@
+# S3 Bucket Configuration variables
 variable "bucket_name" {
   description = "The name of the bucket"
   type = string
 }
 
+variable "versioning" {
+  description = "Activate or not versioning"
+  type = string
+}
+
+# Tags and environment variables
 variable "environment" {
   description = "The environment for the S3 bucket"
   type = string
-  default = "dev"
 }
 
 variable "common_tags" {
@@ -14,8 +20,8 @@ variable "common_tags" {
   type = map(string)
 }
 
-variable "versioning_enabled" {
-  description = "Activate or not versioning"
-  type = string
-  default = "Enabled" # S3 versioning can be either "Enabled" or "Suspended"
-}
+variable "additional_tags" {
+  description = "Additional tags specific for the S3 buckets (will be merged with common_tags)"
+  type        = map(string)
+  default     = {}
+} 
