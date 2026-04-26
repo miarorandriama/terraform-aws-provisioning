@@ -20,6 +20,8 @@ module "ec2" {
   vpc_id    = module.vpc.vpc_id
   subnet_id = module.vpc.private_subnet_id
 
+  s3_bucket_arn = module.app_data_bucket.the_bucket_arn # On lie les deux modules ici
+
   environment         = var.environment
   common_tags = var.common_tags
   additional_tags = var.instance_tags

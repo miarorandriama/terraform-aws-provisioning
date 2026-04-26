@@ -23,6 +23,12 @@ variable "subnet_id" {
   type = string
 }
 
+variable "s3_bucket_arn" {
+  description = "L'ARN du bucket S3 pour restreindre l'accès IAM"
+  type        = string
+  default     = "*" # Par sécurité, on peut mettre * mais l'idéal est de passer l'ARN
+}
+
 # Tags and environment variables
 variable "environment" {
   description = "The environment for the EC2 instance"
