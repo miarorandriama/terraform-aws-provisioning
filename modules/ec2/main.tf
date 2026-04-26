@@ -31,7 +31,7 @@ resource "aws_security_group" "the_ec2_sg" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.env}-sg"
+      Name = "The-${var.environment}-sg"
     }
   )
 }
@@ -44,7 +44,7 @@ resource "aws_instance" "the_ec2_instance" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.env}-${var.instance_name}"
+      Name = "The-${var.environment}-${var.instance_name}"
     }
   )
 }

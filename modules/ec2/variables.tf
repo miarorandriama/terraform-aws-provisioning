@@ -26,7 +26,7 @@ variable "subnet_id" {
   type = string
 }
 
-variable "env" {
+variable "environment" {
   description = "The environment for the EC2 instance"
   type = string
   default = "dev"

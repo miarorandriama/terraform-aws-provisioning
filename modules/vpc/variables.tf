@@ -16,13 +16,13 @@ variable "public_subnet_cidr" {
   default     = "10.0.10.0/24"
 }
 
-variable "az" {
+variable "availability_zone" {
   description = "Availability zone for the subnets"
   type        = string
   default     = "us-east-2a"
 }
 
-variable "env" {
+variable "environment" {
   description = "Environment tag for resources"
   type        = string
   default     = "dev"

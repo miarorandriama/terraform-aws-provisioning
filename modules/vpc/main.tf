@@ -4,7 +4,7 @@ resource "aws_vpc" "the_vpc" {
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.env}-vpc"
+      Name = "The-${var.environment}-vpc"
     }
   )
 }
@@ -12,13 +12,13 @@ resource "aws_vpc" "the_vpc" {
 // Private Subnet
 resource "aws_subnet" "the_private_subnet" {
   vpc_id     = aws_vpc.the_vpc.id
-  availability_zone = var.az
+  availability_zone = var.availability_zone
   cidr_block = var.private_subnet_cidr
   map_public_ip_on_launch = false
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.env}-private-subnet"
+      Name = "The-${var.environment}-private-subnet"
     }
   )
 }
@@ -26,13 +26,13 @@ resource "aws_subnet" "the_private_subnet" {
 // Public Subnet
 resource "aws_subnet" "the_public_subnet" {
   vpc_id     = aws_vpc.the_vpc.id
-  availability_zone = var.az
+  availability_zone = var.availability_zone
   cidr_block = var.public_subnet_cidr
   map_public_ip_on_launch = true
   tags = merge(
     var.common_tags,
     {
-      Name = "The-${var.env}-public-subnet"
+      Name = "The-${var.environment}-public-subnet"
     }
   )
 }
