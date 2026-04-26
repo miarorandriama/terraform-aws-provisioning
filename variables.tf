@@ -8,27 +8,27 @@ variable "vpc_config" {
 variable "instance_config" {
   description = "Configuration for the EC2 instance"
   type        = map(string)
-  default = {}
+  default     = {}
 }
 
 # S3 Bucket Configuration variables
 variable "ec2_bucket_config" {
   description = "Configuration for the S3 bucket linked to the EC2 instance"
   type        = map(string)
-  default = {}
+  default     = {}
 }
 
 variable "tfstate_bucket_config" {
   description = "Configuration for the Terraform backend bucket"
-  type = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
 }
 
 # Tags and environment variables
 variable "environment" {
   description = "Name of the environment"
   type        = string
-  default = "dev"
+  default     = "dev"
 }
 
 variable "common_tags" {

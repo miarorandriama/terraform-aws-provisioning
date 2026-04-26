@@ -6,7 +6,7 @@ module "network" {
   private_subnet_cidr = var.vpc_config.private_subnet_cidr
   availability_zone   = var.vpc_config.az
 
-  environment         = var.environment
+  environment = var.environment
   common_tags = var.common_tags
 }
 
@@ -22,8 +22,8 @@ module "server" {
 
   s3_bucket_arn = module.app_data_bucket.the_bucket_arn # On lie les deux modules ici
 
-  environment         = var.environment
-  common_tags = var.common_tags
+  environment     = var.environment
+  common_tags     = var.common_tags
   additional_tags = var.instance_tags
 }
 
@@ -32,10 +32,10 @@ module "app_data_bucket" {
   source = "./modules/s3"
 
   bucket_name = var.ec2_bucket_config.bucket_name
-  versioning   = var.ec2_bucket_config.versioning
+  versioning  = var.ec2_bucket_config.versioning
 
-  environment = var.environment
-  common_tags = var.common_tags
+  environment     = var.environment
+  common_tags     = var.common_tags
   additional_tags = var.ec2_bucket_tags
 }
 
@@ -44,9 +44,9 @@ module "tf_state_bucket" {
   source = "./modules/s3"
 
   bucket_name = var.tfstate_bucket_config.bucket_name
-  versioning   = var.tfstate_bucket_config.versioning
+  versioning  = var.tfstate_bucket_config.versioning
 
-  environment = var.environment
-  common_tags = var.common_tags
+  environment     = var.environment
+  common_tags     = var.common_tags
   additional_tags = var.tfstate_bucket_tags
 }

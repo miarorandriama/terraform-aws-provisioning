@@ -1,10 +1,10 @@
 resource "aws_instance" "the_ec2_instance" {
-  ami = var.ami
+  ami           = var.ami
   instance_type = var.instance_type
-  
+
   iam_instance_profile = aws_iam_instance_profile.the_ec2_profile.name
 
-  subnet_id = var.subnet_id
+  subnet_id              = var.subnet_id
   vpc_security_group_ids = [aws_security_group.the_ec2_sg.id]
 
   tags = merge(
@@ -45,7 +45,7 @@ resource "aws_security_group" "the_ec2_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  
+
   tags = merge(
     var.common_tags,
     {
