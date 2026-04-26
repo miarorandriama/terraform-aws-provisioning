@@ -1,4 +1,4 @@
-module "vpc" {
+module "network" {
   source = "./modules/vpc"
 
   vpc_cidr            = var.vpc_config.cidr_block
@@ -10,15 +10,15 @@ module "vpc" {
   common_tags = var.common_tags
 }
 
-module "ec2" {
+module "server" {
   source = "./modules/ec2"
 
   instance_name = var.instance_config.instance_name
   instance_type = var.instance_config.instance_type
   ami           = var.instance_config.ami
 
-  vpc_id    = module.vpc.vpc_id
-  subnet_id = module.vpc.private_subnet_id
+  vpc_id    = module.network.vpc_id
+  subnet_id = module.network.private_subnet_id
 
   s3_bucket_arn = module.app_data_bucket.the_bucket_arn # On lie les deux modules ici
 
