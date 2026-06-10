@@ -84,4 +84,6 @@ resource "aws_iam_role_policy_attachment" "the_s3_access" {
 resource "aws_iam_instance_profile" "the_ec2_profile" {
   name = "${var.instance_name}-profile"
   role = aws_iam_role.the_ec2_role.name
+
+  depends_on = [ aws_iam_role_policy_attachment.the_s3_access ]
 }
